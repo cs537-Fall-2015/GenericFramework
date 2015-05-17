@@ -17,11 +17,11 @@ The way this code works is as follows:
 	Client 1 -> Server 2
 	Client 2 -> Server 1
 
-	1. The first message sent from client to server is a print statement that prints the 			server's current object
+	1. The first message sent from client to server is a print statement that prints the server's current object
 
-	2. The second message tells the server to perform some calculations on its own object 	then save its object to a JSON file in memory
+	2. The second message tells the server to perform some calculations on its own object then save its object to a JSON file in memory
 
-	3. The third message tells the server to retrieve another module's object from its JSON 	file in memory
+	3. The third message tells the server to retrieve another module's object from its JSON file in memory
 
 	4. the last message tells the server to shut down
 
