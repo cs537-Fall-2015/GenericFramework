@@ -1,0 +1,9 @@
+//If any module is calling a Client 
+		1> Check if chemin already has some sample in analysis then send JSON message to CCU 
+		2> Else accept the request to analysis new sample. 
+
+//Create a JSOn File and send power requirement to control and command unit
+
+//If power unit has sufficient power for our module then CCU will create a CHEMIN client and will send mesage power on  
+	
+

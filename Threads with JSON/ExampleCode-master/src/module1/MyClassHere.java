@@ -20,6 +20,8 @@ public class MyClassHere {
 		this.setMyLong(10000l);
 		this.setMyString("This is awesome!!!");
 	}
+	
+	
 
 	public int getMyInteger() {
 		return myInteger;

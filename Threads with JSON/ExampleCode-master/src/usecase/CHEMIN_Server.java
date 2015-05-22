@@ -6,9 +6,9 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-public class UseCaseServer extends RoverServerRunnable{
+public class CHEMIN_Server extends RoverServerRunnable{
 
-	public UseCaseServer(int port) throws IOException {
+	public CHEMIN_Server(int port) throws IOException {
 		super(port);
 		// TODO Auto-generated constructor stub
 	}

@@ -1,4 +1,4 @@
-package module2;
+package module1;
 
 /*	
  * Created by: 	Jonathan Young
@@ -17,9 +17,9 @@ import org.json.simple.parser.JSONParser;
 
 import generic.RoverClientRunnable;
 
-public class ModuleTwoClient extends RoverClientRunnable{
+public class ComputerCommand_Client extends RoverClientRunnable{
 
-	public ModuleTwoClient(int port, InetAddress host)
+	public ComputerCommand_Client(int port, InetAddress host)
 			throws UnknownHostException {
 		super(port, host);
 	}
@@ -29,25 +29,23 @@ public class ModuleTwoClient extends RoverClientRunnable{
 		try{
 			ObjectOutputStream outputToAnotherObject = null;
 		    ObjectInputStream inputFromAnotherObject = null;
-		    Thread.sleep(5500);
+		    Thread.sleep(5000);
 		    
-		    //Send 4 commands to the Server
-	        for(int i = 0; i < 4; i++){
+		  //Send 3 commands to the Server
+	        for(int i = 0; i < 2; i++){
 	            //write to socket using ObjectOutputStream
 	            outputToAnotherObject = new ObjectOutputStream(getRoverSocket().getNewSocket().getOutputStream());
 	            
-	            //System.out.println("=================================================");
-	            System.out.println("Module 2 Client: Sending request to Socket Server");
-	            //System.out.println("=================================================");
+	            System.out.println("Module 1 Client: Sending request to Socket Server");
 	            
 	            if(i == 3){
 	            	outputToAnotherObject.writeObject("exit");
 	            }
-	            else if(i == 2) {
-	            	outputToAnotherObject.writeObject("MODULE_TWO_GET");
+	            else if(i == 2){
+	            	outputToAnotherObject.writeObject("MODULE_ONE_GET");
 	            }
 	            else if(i == 1) {
-	            	outputToAnotherObject.writeObject("MODULE_ONE_DO_SOMETHING");
+	            	outputToAnotherObject.writeObject("MODULE_TWO_DO_SOMETHING");
 	            }
 	            else if(i == 0) {
 	            	outputToAnotherObject.writeObject("MODULE_PRINT");
@@ -56,43 +54,37 @@ public class ModuleTwoClient extends RoverClientRunnable{
 	            //read the server response message
 	            inputFromAnotherObject = new ObjectInputStream(getRoverSocket().getSocket().getInputStream());
 	            String message = (String) inputFromAnotherObject.readObject();
-	            System.out.println("Module 2 Client: Message from Server - " + message.toUpperCase());
+	            System.out.println("CHEMIN Client: Message from Server - " + message.toUpperCase());
 	            
 	            // The server sends us a JSON String here
 	            String jsonString = (String) inputFromAnotherObject.readObject();
-	            System.out.println("Module 2 Client: Message from Server - " + jsonString.toUpperCase());
+	            System.out.println("CHEMIN Client: Message from Server - " + jsonString.toUpperCase());
 	            
 	            // We can then parse the JSON String into a JSON Object
 	            JSONParser parser = new JSONParser();
 	            JSONObject jsonObject = (JSONObject) parser.parse(jsonString);
 	            
-	            Long oldLong = (Long) jsonObject.get("myInteger");
+	            // Integers are passed as longs
+				Long myLong = (Long) jsonObject.get("myInteger");
 				
 				// Pass the long back into an integer
-				Integer myInteger = new Integer(oldLong.intValue());
-				
-				boolean myBoolean = (boolean) jsonObject.get("myBoolean");
-				double myDouble = (double) jsonObject.get("myDouble");
-				long myLong = (long) jsonObject.get("myLong");
+				Integer myInteger = new Integer(myLong.intValue());
 				String myString = (String) jsonObject.get("myString");
 				
 				System.out.println("");
-				System.out.println("<Start> Client 2 now has: <Start>");
+				System.out.println("<Start> Client 1 now has: <Start>");
 				System.out.println("===========================================");
-				System.out.println("This is Class " + Constants.ONE + "'s object ");
+				System.out.println("This is Class " + Constants.TWO + "'s object ");
 				System.out.println("myInteger = " + myInteger);
-				System.out.println("myBoolean = " + myBoolean);
-				System.out.println("myDouble = " + myDouble);
-				System.out.println("myLong = " + myLong);
 				System.out.println("myString = " + myString);
 				System.out.println("===========================================");
-				System.out.println("<End> Client 2 now has: <End>");
+				System.out.println("<End> Client 1 now has: <End>");
 				System.out.println("");
 	            
 	            //close resources
 	            inputFromAnotherObject.close();
 	            outputToAnotherObject.close();
-	            Thread.sleep(7500);
+	            Thread.sleep(5000);
 	        }
 	        closeAll();
 		}	        
@@ -101,7 +93,7 @@ public class ModuleTwoClient extends RoverClientRunnable{
 			e.printStackTrace();
 		}
 		catch (Exception error) {
-			System.out.println("Client: Error:" + error.getMessage());
+			System.out.println("Client CCU: Error:" + error.getMessage());
 		}
 		
 	}

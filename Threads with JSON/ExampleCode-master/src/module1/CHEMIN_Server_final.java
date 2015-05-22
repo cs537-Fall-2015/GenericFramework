@@ -1,4 +1,4 @@
-package module2;
+package module1;
 
 /*	
  * Created by: 	Jonathan Young
@@ -9,33 +9,32 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-import json.Constants;
-import json.GlobalReader;
-import json.MyWriter;
-
 import org.json.simple.JSONObject;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import json.Constants;
+import json.GlobalReader;
+import json.MyWriter;
 import generic.RoverServerRunnable;
 
-public class ModuleTwoServer extends RoverServerRunnable {
+public class CHEMIN_Server_final extends RoverServerRunnable {
 
-	public ModuleTwoServer(int port) throws IOException {
+	public CHEMIN_Server_final(int port) throws IOException {
 		super(port);
 	}
 
 	@Override
 	public void run() {
 		
-		MyClassHereTwo moduleTwoClass = new MyClassHereTwo(2);
+		MyClassHere moduleOneClass = new MyClassHere(1);
 		
 		try {
-			
+
 			while (true) {
 				
-				System.out.println("Module 2 Server: Waiting for client request");
+				System.out.println("CHEMIN Server: Waiting for client request");
 				
 				// creating socket and waiting for client connection
 				getRoverServerSocket().openSocket();
@@ -45,16 +44,16 @@ public class ModuleTwoServer extends RoverServerRunnable {
 				
 				// convert ObjectInputStream object to String
 				String message = (String) inputFromAnotherObject.readObject();
-				System.out.println("Module 2 Server: Message Received from Client - "+ message.toUpperCase());
+				System.out.println("Module 1 Server: Message Received from Client - "+ message.toUpperCase());
 				
 				// create ObjectOutputStream object
 				ObjectOutputStream outputToAnotherObject = new ObjectOutputStream(getRoverServerSocket().getSocket().getOutputStream());
 				
 				// write object to Socket
-				outputToAnotherObject.writeObject("Module 2 Server response Hi Client - " + message);
+				outputToAnotherObject.writeObject("Module 1 Server response Hi Client - " + message);
 				
 				Gson gson = new GsonBuilder().setPrettyPrinting().create();
-				String jsonString = gson.toJson(moduleTwoClass);
+				String jsonString = gson.toJson(moduleOneClass);
 				
 				outputToAnotherObject.writeObject(jsonString);
 				
@@ -69,59 +68,54 @@ public class ModuleTwoServer extends RoverServerRunnable {
 				else if(message.equalsIgnoreCase("MODULE_PRINT")) {
 					// The server prints out its own object
 					System.out.println("");
-					System.out.println("<Server Two>");
-					System.out.println("This is module " + Constants.TWO + "'s object at the start");
-					moduleTwoClass.printObject();
-					System.out.println("<Server Two>");
+					System.out.println("<Server One>");
+					System.out.println("This is module " + Constants.ONE + "'s object at the start");
+					moduleOneClass.printObject();
+					System.out.println("<Server One>");
 					System.out.println("");
 				}
-				else if(message.equalsIgnoreCase("MODULE_TWO_DO_SOMETHING")) {
-					// The server does some example calculations
-					moduleTwoClass.addOne();
-					moduleTwoClass.changeString();
+				else if(message.equalsIgnoreCase("MODULE_ONE_DO_SOMETHING")) {
+					moduleOneClass.addOne();
+					moduleOneClass.changeBoolean();
+					moduleOneClass.changeDouble();
+					moduleOneClass.changeLong();
+					moduleOneClass.changeString();
 					
 					// Using MyWriter class our server writes the changed object into a JSON file
 					// MyWriter arguments are:
 					// MyWriter writerName = new MyWriter(className, Constants.GroupNumber)
 					@SuppressWarnings("unused")
-					MyWriter JSONWriter = new MyWriter(moduleTwoClass, Constants.TWO);
+					MyWriter JSONWriter = new MyWriter(moduleOneClass, Constants.ONE);
 					System.out.println("");
-					System.out.println("<Server Two>");
-					moduleTwoClass.printObject();
-					System.out.println("<Server Two>");
+					System.out.println("<Server One>");
+					moduleOneClass.printObject();
+					System.out.println("<Server One>");
 					System.out.println("");
 				}
-				else if(message.equalsIgnoreCase("MODULE_ONE_GET")) {
+				else if(message.equalsIgnoreCase("MODULE_TWO_GET")) {
 					// The server reads another a JSON Object in memory
-					GlobalReader JSONReader = new GlobalReader(Constants.ONE);
+					GlobalReader JSONReader = new GlobalReader(Constants.TWO);
 					JSONObject thatOtherObject = JSONReader.getJSONObject();
-
+					
 					// Integers are passed as longs
-					Long oldLong = (Long) thatOtherObject.get("myInteger");
+					Long myLong = (Long) thatOtherObject.get("myInteger");
 					
 					// Pass the long back into an integer
-					Integer myInteger = new Integer(oldLong.intValue());
-					
-					boolean myBoolean = (boolean) thatOtherObject.get("myBoolean");
-					double myDouble = (double) thatOtherObject.get("myDouble");
-					long myLong = (long) thatOtherObject.get("myLong");
+					Integer myInteger = new Integer(myLong.intValue());
 					String myString = (String) thatOtherObject.get("myString");
 					
 					System.out.println("");
-					System.out.println("<Start> Module 2 Server Receiving <Start>");
+					System.out.println("<Start> Module 1 Server Receiving <Start>");
 					System.out.println("===========================================");
-					System.out.println("This is Class " + Constants.ONE + "'s object ");
+					System.out.println("This is Class " + Constants.TWO + "'s object ");
 					System.out.println("myInteger = " + myInteger);
-					System.out.println("myBoolean = " + myBoolean);
-					System.out.println("myDouble = " + myDouble);
-					System.out.println("myLong = " + myLong);
 					System.out.println("myString = " + myString);
 					System.out.println("===========================================");
-					System.out.println("<End> Module 2 Server Receiving <End>");
+					System.out.println("<End> Module 1 Server Receiving <End>");
 					System.out.println("");
 				}
 			}
-			System.out.println("Server: Shutting down Socket server 2!!");
+			System.out.println("Server: Shutting down Socket server 1!!");
 			// close the ServerSocket object
 			closeAll();
 		} catch (IOException e) {
@@ -129,7 +123,7 @@ public class ModuleTwoServer extends RoverServerRunnable {
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (Exception error) {
-			System.out.println("Server: Error: " + error.getMessage());
+			System.out.println("Server CCU: Error: " + error.getMessage());
 		}
 
 	}
