@@ -7,9 +7,9 @@ import java.io.ObjectOutputStream;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
-public class CHEMIN_Client extends RoverClientRunnable{
+public class UseCaseClient extends RoverClientRunnable{
 
-	public CHEMIN_Client(int port, InetAddress host) throws UnknownHostException {
+	public UseCaseClient(int port, InetAddress host) throws UnknownHostException {
 		super(port, host);
 		// TODO Auto-generated constructor stub
 	}

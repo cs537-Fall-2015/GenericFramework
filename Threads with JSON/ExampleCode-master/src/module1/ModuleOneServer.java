@@ -19,9 +19,9 @@ import json.GlobalReader;
 import json.MyWriter;
 import generic.RoverServerRunnable;
 
-public class CHEMIN_Server extends RoverServerRunnable {
+public class ModuleOneServer extends RoverServerRunnable {
 
-	public CHEMIN_Server(int port) throws IOException {
+	public ModuleOneServer(int port) throws IOException {
 		super(port);
 	}
 
@@ -34,7 +34,7 @@ public class CHEMIN_Server extends RoverServerRunnable {
 
 			while (true) {
 				
-				System.out.println("CHEMIN Server: Waiting for client request");
+				System.out.println("Module 1 Server: Waiting for client request");
 				
 				// creating socket and waiting for client connection
 				getRoverServerSocket().openSocket();
@@ -57,16 +57,13 @@ public class CHEMIN_Server extends RoverServerRunnable {
 				
 				outputToAnotherObject.writeObject(jsonString);
 				
-				outputToAnotherObject.close();
 				// close resources
 				inputFromAnotherObject.close();
 				outputToAnotherObject.close();
 				
-				if (message.equalsIgnoreCase("exit"))
-					break;
 				// getRoverServerSocket().closeSocket();
 				// terminate the server if client sends exit request
-				/*if (message.equalsIgnoreCase("exit"))
+				if (message.equalsIgnoreCase("exit"))
 					break;
 				else if(message.equalsIgnoreCase("MODULE_PRINT")) {
 					// The server prints out its own object
@@ -116,7 +113,7 @@ public class CHEMIN_Server extends RoverServerRunnable {
 					System.out.println("===========================================");
 					System.out.println("<End> Module 1 Server Receiving <End>");
 					System.out.println("");
-				}*/
+				}
 			}
 			System.out.println("Server: Shutting down Socket server 1!!");
 			// close the ServerSocket object

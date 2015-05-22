@@ -12,10 +12,10 @@ public class UseCaseMain {
 		
 		try {
 			
-			CHEMIN_Server useCaseServer = new CHEMIN_Server(port);
+			UseCaseServer useCaseServer = new UseCaseServer(port);
 			Thread server = RoverThreadHandler.getRoverThreadHandler().getNewThread(useCaseServer);
 			
-			CHEMIN_Client useCaseClient = new CHEMIN_Client(port, null);
+			UseCaseClient useCaseClient = new UseCaseClient(port, null);
 			Thread client = RoverThreadHandler.getRoverThreadHandler().getNewThread(useCaseClient);
 			
 			server.start();
