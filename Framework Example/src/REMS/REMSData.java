@@ -1,5 +1,8 @@
 package REMS;
 
+import java.io.FileWriter;
+import java.io.IOException;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -52,6 +55,37 @@ public class REMSData {
 
 		return remsString;
 
+	}
+
+	public void writeJSONData() {
+		String myFilePath = "/Users/userName/Desktop ";
+		
+		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+		// Instantiate the writer since we're writing to a JSON file.
+		FileWriter writer = null;
+		try {
+			writer = new FileWriter(myFilePath);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		// Object is converted to a JSON String
+		String jsonString = gson.toJson(remsObject);
+		
+		// Write the file
+		try {
+			writer.write(jsonString);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		// Close the Writer
+		try {
+			writer.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

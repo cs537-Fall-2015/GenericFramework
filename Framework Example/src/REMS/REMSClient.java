@@ -20,7 +20,7 @@ public class REMSClient extends RoverClientRunnable {
 			ObjectInputStream inputFromAnotherObject = null;
 			Thread.sleep(5000);
 
-			REMSData objREMSdata = new REMSData();
+			// REMSData objREMSdata = new REMSData();
 
 			// Send 5 messages to the Server
 			// for (int i = 0; i < 2; i++) {
@@ -39,12 +39,13 @@ public class REMSClient extends RoverClientRunnable {
 			// } else {
 			// outputToAnotherObject.writeObject("Message #" + i +
 			// " from module REMS.");
-			outputToAnotherObject.writeObject(objREMSdata.postREMSdata()
-					+ " exit");
+			// outputToAnotherObject.writeObject(objREMSdata.postREMSdata()
+			// + " exit");
 			// }
 
-			// outputToAnotherObject.writeObject("JSON data \n"+
-			// objREMSdata.getRemsData() + " \nFrom REMS module");
+			outputToAnotherObject.writeObject("REMS_ON");
+			outputToAnotherObject.writeObject("GET_DATA");
+			outputToAnotherObject.writeObject("exit");
 
 			// read the server response message
 			inputFromAnotherObject = new ObjectInputStream(getRoverSocket()
@@ -55,7 +56,7 @@ public class REMSClient extends RoverClientRunnable {
 
 			// close resources
 			inputFromAnotherObject.close();
- 			outputToAnotherObject.close();
+			outputToAnotherObject.close();
 			Thread.sleep(5000);
 			// }
 			closeAll();

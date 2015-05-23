@@ -40,11 +40,24 @@ public class REMSServer extends RoverServerRunnable {
 				ObjectOutputStream outputToAnotherObject = new ObjectOutputStream(
 						getRoverServerSocket().getSocket().getOutputStream());
 
+				switch (message) {
+				case "REMS_ON":
+					System.out.println("REMS is on now");
+					break;
+				case "GET_DATA":
+					objREMSdata.writeJSONData();
+					System.out.println("JSON data saved to desktop.");
+					break;
+				default:
+					break;
+				}
+
 				// write object to Socket
 				// outputToAnotherObject.writeObject("Module REMS Server response Hi Client - "
 				// + message);
-				outputToAnotherObject.writeObject("JSON data \n"
-						+ objREMSdata.getRemsData() + " \nFrom REMS module" + message);
+				// outputToAnotherObject.writeObject("JSON data \n"
+				// + objREMSdata.getRemsData() + " \nFrom REMS module"
+				// + message);
 
 				// close resources
 				inputFromAnotherObject.close();
