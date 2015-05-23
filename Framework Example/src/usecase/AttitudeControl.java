@@ -1,8 +1,19 @@
 package usecase;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.StringTokenizer;
+
+import org.json.simple.JSONObject;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 public class AttitudeControl {
 	
@@ -30,17 +41,17 @@ public class AttitudeControl {
 	}
 	/* We need to consider angle for clockwise and anti-clockwise direction */ 
 	
-	public float[] rotate(float x,float y,float p,float q,float angle)
+	public float[] rotate(float x,float y,float p,float q,float angleP)
 	{
 		float new_coordinates[] = new float[2];
-		new_coordinates[0] = (float) ((x-p)*Math.cos(angle) - (y-q)*Math.sin(angle) + p);
-		new_coordinates[1] = (float) ((x-p)*Math.sin(angle) - (y-q)*Math.cos(angle) + q);
+		new_coordinates[0] = (float) ((x-p)*Math.cos(angle+angleP) - (y-q)*Math.sin(angle+angleP) + p);
+		new_coordinates[1] = (float) ((x-p)*Math.sin(angle+angleP) - (y-q)*Math.cos(angle+angleP) + q);
 		return new_coordinates; 	
 	}
 	
 	
 	/* This function will return co-ordinates of all wheels */
-	@SuppressWarnings("unused")
+	@SuppressWarnings({ "unused", "unchecked" })
 	public Map<Integer, ArrayList<Float>> getWheelsCoordinate() {
 		
 		float wheelX1 = cogX + (float) roverLength/2;
@@ -69,6 +80,14 @@ public class AttitudeControl {
 		System.out.println("Wheel X3: "+wheelX3+" And Y3: "+wheelY3);
 		System.out.println("Wheel X4: "+wheelX4+" And Y4: "+wheelY4);
 		
+		String myFilePath = "C:/Users/VatsalSevak/Desktop/Example.json";
+		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+		
+		JSONObject job = new JSONObject();
+		job.put("wheel1X", wheel1[0]);
+		job.put("wheel1X", wheel1[1]);
+		
+		System.out.println("JOB: "+job);
 		
 		Map<Integer, ArrayList<Float>> edgeMap = new HashMap<Integer, ArrayList<Float>>();
 		ArrayList<Float> array1 = new ArrayList<Float>();
@@ -88,4 +107,41 @@ public class AttitudeControl {
 		
 		return edgeMap ;
 	}
+	
+	@SuppressWarnings({ "resource", "unused" })
+	public float getTilt() throws IOException {
+		float tilt = 0;
+		String line="";
+		float yy = 0;
+		String xx = "";
+		String zz = "";
+		
+		File file = new File("C:/Users/VatsalSevak/Documents/GitHub/Generic_New/GenericFramework/Framework Example/src/usecase/normalMap.txt");	
+		FileReader fileReader = new FileReader(file);
+		BufferedReader br = new BufferedReader(fileReader);
+		
+		while((line = br.readLine()) != null)	{
+			StringTokenizer st = new StringTokenizer(line,"]");
+			while(st.hasMoreTokens()) {
+				int x = Integer.parseInt(st.nextToken().substring(1));
+				int y = Integer.parseInt(st.nextToken().substring(1));
+				String rest = st.nextToken();
+				if(x == Math.round(cogX) && y == Math.round(cogY)) {
+					StringTokenizer st1 = new StringTokenizer(rest,",");	
+					while(st1.hasMoreTokens()) {
+						xx = st1.nextToken();
+						yy = Float.parseFloat(st1.nextToken());
+						zz = st1.nextToken();
+					}
+				}
+			}
+		}
+		
+		tilt = Math.round((Math.acos(yy)*180/Math.PI));
+		System.out.println("Tilt :"+tilt+" Degree");
+		
+		return tilt;
+	}
+	
+
 }

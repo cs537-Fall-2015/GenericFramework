@@ -29,9 +29,10 @@ public class UseCaseServer extends RoverServerRunnable{
 	            
 	            if(message.equalsIgnoreCase("MOBL_MOVE")) {
 	            	AttitudeControl ac = new AttitudeControl();
-	        		float [] co = ac.getCenterOfGravity(5, 40);
+	        		float [] co = ac.getCenterOfGravity(10, 20);
 	        		System.out.println("New Center Of Gravity X: "+co[0]+" And Y: "+co[1]);
 	        		ac.getWheelsCoordinate();
+	        		ac.getTilt();
 	            }
 	            
 	            

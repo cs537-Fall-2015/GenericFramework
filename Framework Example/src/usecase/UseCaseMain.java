@@ -9,7 +9,7 @@ public class UseCaseMain {
 
 	public static void main(String[] args) {
 		
-		int port = 9004;
+		int port = 9006;
 		
 		try {
 			
