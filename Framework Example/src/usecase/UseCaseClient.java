@@ -27,6 +27,7 @@ public class UseCaseClient extends RoverClientRunnable{
 	            //write to socket using ObjectOutputStream
 	            oos = new ObjectOutputStream(getRoverSocket().getNewSocket().getOutputStream());
 	            System.out.println("Client: Sending request to Socket Server");
+	            if(i==2)oos.writeObject("MOBL_MOVE");
 	            if(i==4)oos.writeObject("exit");
 	            else oos.writeObject("Test "+i);
 	            //read the server response message

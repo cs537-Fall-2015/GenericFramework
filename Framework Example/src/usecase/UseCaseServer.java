@@ -26,6 +26,15 @@ public class UseCaseServer extends RoverServerRunnable{
 	            //convert ObjectInputStream object to String
 	            String message = (String) ois.readObject();
 	            System.out.println("Server: Message Received from Client - " + message.toUpperCase());
+	            
+	            if(message.equalsIgnoreCase("MOBL_MOVE")) {
+	            	AttitudeControl ac = new AttitudeControl();
+	        		float [] co = ac.getCenterOfGravity(5, 40);
+	        		System.out.println("New Center Of Gravity X: "+co[0]+" And Y: "+co[1]);
+	        		ac.getWheelsCoordinate();
+	            }
+	            
+	            
 	            //create ObjectOutputStream object
 	            ObjectOutputStream oos = new ObjectOutputStream(getRoverServerSocket().getSocket().getOutputStream());
 	            //write object to Socket
@@ -42,16 +51,13 @@ public class UseCaseServer extends RoverServerRunnable{
 	        closeAll();
 		}
 		catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	    catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 	    }
         catch(Exception error){
         	System.out.println("Server: Error:" + error.getMessage());
         }
-		
 	}
 }

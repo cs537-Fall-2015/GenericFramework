@@ -4,11 +4,12 @@ import generic.RoverThreadHandler;
 
 import java.io.IOException;
 
+
 public class UseCaseMain {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		int port = 9897;
+		
+		int port = 9004;
 		
 		try {
 			
@@ -17,18 +18,11 @@ public class UseCaseMain {
 			
 			UseCaseClient useCaseClient = new UseCaseClient(port, null);
 			Thread client = RoverThreadHandler.getRoverThreadHandler().getNewThread(useCaseClient);
-			
 			server.start();
-			
 			client.start();
-			
-			
 		} 
 		catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 	}
-
 }
