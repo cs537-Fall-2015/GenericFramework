@@ -58,7 +58,7 @@ public class REMSData {
 	}
 
 	public void writeJSONData() {
-		String myFilePath = "/Users/userName/Desktop ";
+		String myFilePath = "/Users/Chavda/Desktop/REMSDATA.json";
 		
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 

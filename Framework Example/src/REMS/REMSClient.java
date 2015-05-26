@@ -43,9 +43,9 @@ public class REMSClient extends RoverClientRunnable {
 			// + " exit");
 			// }
 
-			outputToAnotherObject.writeObject("REMS_ON");
+			//outputToAnotherObject.writeObject("REMS_ON");
 			outputToAnotherObject.writeObject("GET_DATA");
-			outputToAnotherObject.writeObject("exit");
+			//outputToAnotherObject.writeObject("exit");
 
 			// read the server response message
 			inputFromAnotherObject = new ObjectInputStream(getRoverSocket()
