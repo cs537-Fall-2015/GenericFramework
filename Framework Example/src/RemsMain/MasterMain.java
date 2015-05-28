@@ -1,4 +1,4 @@
-package main;
+package RemsMain;
 
 import generic.RoverThreadHandler;
 
