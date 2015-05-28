@@ -1,6 +1,6 @@
-package REMS;
+package main;
 
-public class REMSClass {
+public class REMS {
 	private double REMS_VERTICAL_WINDSPEED_MIN;
 	private double REMS_VERTICAL_WINDSPEED;
 	private double REMS_VERTICAL_WINDSPEED_MAX;
@@ -36,7 +36,7 @@ public class REMSClass {
 	 * @param rEMS_HUMIDITY_MIN
 	 * @param rEMS_HUMIDITY_MAX
 	 */
-	public REMSClass(double rEMS_VERTICAL_WINDSPEED_MIN,
+	public REMS(double rEMS_VERTICAL_WINDSPEED_MIN,
 			double rREMS_VERTICAL_WINDSPEED,
 			double rREMS_VERTICAL_WINDSPEED_MAX,
 			double rEMS_HORIZONTAL_WINDSPEED_MIN,

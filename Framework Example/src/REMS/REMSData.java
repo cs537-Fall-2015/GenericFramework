@@ -3,11 +3,13 @@ package REMS;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import main.REMS;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 public class REMSData {
-	REMSClass remsObject = new REMSClass(0, 5, 10, 0, 30, 70, 150, 300, 200,
+	REMS remsObject = new REMS(0, 5, 10, 0, 30, 70, 150, 300, 200,
 			100, 150, 300, 840, 40, 275, 203, 323, "RUNNING");
 
 	public String getRemsData() {
