@@ -23,42 +23,48 @@ public class REMSClient extends RoverClientRunnable {
 			// REMSData objREMSdata = new REMSData();
 
 			// Send 5 messages to the Server
-			// for (int i = 0; i < 2; i++) {
-			// write to socket using ObjectOutputStream
-			outputToAnotherObject = new ObjectOutputStream(getRoverSocket()
-					.getNewSocket().getOutputStream());
+			for (int i = 0; i < 2; i++) {
+				// write to socket using ObjectOutputStream
+				outputToAnotherObject = new ObjectOutputStream(getRoverSocket()
+						.getNewSocket().getOutputStream());
 
-			System.out
-					.println("=================================================");
-			System.out.println("REMS Client: Sending request to Socket Server");
-			System.out
-					.println("=================================================");
+				System.out
+						.println("=================================================");
+				System.out
+						.println("REMS Client: Sending request to Socket Server");
+				System.out
+						.println("=================================================");
 
-			// if (i == 2) {
-			// outputToAnotherObject.writeObject("exit");
-			// } else {
-			// outputToAnotherObject.writeObject("Message #" + i +
-			// " from module REMS.");
-			// outputToAnotherObject.writeObject(objREMSdata.postREMSdata()
-			// + " exit");
-			// }
+				if (i == 2) {
+					outputToAnotherObject.writeObject("exit");
+				} else {
+					// outputToAnotherObject.writeObject("Message #" + i
+					// + " from module REMS.");
 
-			//outputToAnotherObject.writeObject("REMS_ON");
-			outputToAnotherObject.writeObject("GET_DATA");
-			//outputToAnotherObject.writeObject("exit");
+					switch (i) {
+					case 0:
+						outputToAnotherObject.writeObject("REMS_ON");
+						break;
+					case 1:
+						outputToAnotherObject.writeObject("GET_DATA");
+						break;
+					default:
+						break;
+					}
+				}
 
-			// read the server response message
-			inputFromAnotherObject = new ObjectInputStream(getRoverSocket()
-					.getSocket().getInputStream());
-			String message = (String) inputFromAnotherObject.readObject();
-			System.out.println("Module REMS Client: Message from Server - "
-					+ message.toUpperCase());
+				// read the server response message
+				inputFromAnotherObject = new ObjectInputStream(getRoverSocket()
+						.getSocket().getInputStream());
+				String message = (String) inputFromAnotherObject.readObject();
+				// System.out.println("Module REMS Client: Message from Server - "
+				// + message.toUpperCase());
 
-			// close resources
-			inputFromAnotherObject.close();
-			outputToAnotherObject.close();
-			Thread.sleep(5000);
-			// }
+				// close resources
+				inputFromAnotherObject.close();
+				outputToAnotherObject.close();
+				Thread.sleep(5000);
+			}
 			closeAll();
 		} catch (UnknownHostException e) {
 			// TODO Auto-generated catch block

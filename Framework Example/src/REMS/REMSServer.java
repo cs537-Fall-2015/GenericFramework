@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+import json.MyWriter;
 import generic.RoverServerRunnable;
 
 public class REMSServer extends RoverServerRunnable {
@@ -13,7 +14,7 @@ public class REMSServer extends RoverServerRunnable {
 	}
 
 	REMSData objREMSdata = new REMSData();
-
+	MyWriter objMyWriter = new MyWriter();
 	@Override
 	public void run() {
 
@@ -45,16 +46,17 @@ public class REMSServer extends RoverServerRunnable {
 					System.out.println("REMS is on now");
 					break;
 				case "GET_DATA":
-					objREMSdata.writeJSONData();
-					System.out.println("JSON data saved to desktop.");
+					objMyWriter.writeJSONData();
+					System.out.println("JSON data saved to a text file.");
 					break;
 				default:
 					break;
 				}
 
 				// write object to Socket
-				// outputToAnotherObject.writeObject("Module REMS Server response Hi Client - "
-				// + message);
+				outputToAnotherObject
+						.writeObject("Module REMS Server response Hi Client - "
+								+ message);
 				// outputToAnotherObject.writeObject("JSON data \n"
 				// + objREMSdata.getRemsData() + " \nFrom REMS module"
 				// + message);
