@@ -1,7 +1,13 @@
 package REMS;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 import main.REMS;
 
@@ -9,8 +15,8 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 public class REMSData {
-	REMS remsObject = new REMS(0, 5, 10, 0, 30, 70, 150, 300, 200,
-			100, 150, 300, 840, 40, 275, 203, 323, "RUNNING");
+	REMS remsObject = new REMS(0, 5, 10, 0, 30, 70, 150, 300, 200, 100, 150,
+			300, 840, 40, 275, 203, 323, "RUNNING");
 
 	public String getRemsData() {
 
@@ -61,7 +67,7 @@ public class REMSData {
 
 	public void writeJSONData() {
 		String myFilePath = "/Users/Chavda/Desktop/REMSDATA.json";
-		
+
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
 		// Instantiate the writer since we're writing to a JSON file.
@@ -71,23 +77,52 @@ public class REMSData {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 		// Object is converted to a JSON String
 		String jsonString = gson.toJson(remsObject);
-		
+
 		// Write the file
 		try {
 			writer.write(jsonString);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 		// Close the Writer
 		try {
 			writer.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public JSONObject readJSONData() {
+	
+		String myFilePath = "/Users/Chavda/Desktop/REMSDATA.json";
+		
+		// JSONParser is used to parse the data
+		JSONParser parser = new JSONParser();
+		
+		// the double list is passed as its own object
+		JSONObject jsonObject = new JSONObject();
+		
+		try {
+			Object obj = parser.parse(new FileReader(myFilePath));
+		    jsonObject = (JSONObject) obj;
+			
+		} catch (FileNotFoundException e) {
+			System.out.println("No file found.");
+			e.printStackTrace();
+		} catch (IOException e) {
+			System.out.println("I/O exception found.");
+			e.printStackTrace();
+		} catch (ParseException e) {
+			System.out.println("Parse exception found.");
+			e.printStackTrace();
+		}
+		
+	
+		return jsonObject;
 	}
 
 }

@@ -45,9 +45,14 @@ public class REMSServer extends RoverServerRunnable {
 				case "REMS_ON":
 					System.out.println("REMS is on now");
 					break;
-				case "GET_DATA":
+				case "WRITE_DATA":
 					objMyWriter.writeJSONData();
 					System.out.println("JSON data saved to a text file.");
+					break;
+				case "READ_DATA":
+					objREMSdata.readJSONData();
+					System.out.println("JSON data read from a text file.");
+					System.out.println(objREMSdata.readJSONData().toJSONString());
 					break;
 				default:
 					break;
