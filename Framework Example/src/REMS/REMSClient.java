@@ -23,7 +23,7 @@ public class REMSClient extends RoverClientRunnable {
 			// REMSData objREMSdata = new REMSData();
 
 			// Send 5 messages to the Server
-			for (int i = 0; i < 2; i++) {
+			for (int i = 0; i < 3; i++) {
 				// write to socket using ObjectOutputStream
 				outputToAnotherObject = new ObjectOutputStream(getRoverSocket()
 						.getNewSocket().getOutputStream());
