@@ -16,7 +16,7 @@ import com.google.gson.GsonBuilder;
 
 public class REMSData {
 	REMS remsObject = new REMS(0, 5, 10, 0, 30, 70, 150, 300, 200, 100, 150,
-			300, 840, 40, 275, 203, 323, "RUNNING");
+			300, 840, 40, 275, 203, 323, "RUNNING", 250);
 
 	public String getRemsData() {
 
@@ -123,6 +123,13 @@ public class REMSData {
 		
 	
 		return jsonObject;
+	}
+	
+	public String getJSONFilePath()
+	{
+		String myFilePath = "/Users/Chavda/Desktop/REMSDATA.json";
+		
+		return myFilePath;
 	}
 
 }

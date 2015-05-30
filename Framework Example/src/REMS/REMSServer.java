@@ -15,6 +15,7 @@ public class REMSServer extends RoverServerRunnable {
 
 	REMSData objREMSdata = new REMSData();
 	MyWriter objMyWriter = new MyWriter();
+
 	@Override
 	public void run() {
 
@@ -22,7 +23,7 @@ public class REMSServer extends RoverServerRunnable {
 			while (true) {
 
 				System.out
-						.println("Module REMS Server: Waiting for client request");
+						.println("Module REMS Server: Waiting for client request \n");
 
 				// creating socket and waiting for client connection
 				getRoverServerSocket().openSocket();
@@ -43,16 +44,33 @@ public class REMSServer extends RoverServerRunnable {
 
 				switch (message) {
 				case "REMS_ON":
-					System.out.println("REMS is on now");
+					System.out.println("Command received to start the REMS \n");
+					Thread.sleep(3000);
+					System.out.println("REMS is getting started....\n");
+					Thread.sleep(5000);
+					System.out.println("REMS is on now \n");
 					break;
 				case "WRITE_DATA":
+					System.out
+							.println("Command received to write data from client....\n");
+					Thread.sleep(3000);
+					System.out.println("Writing data to file....\n");
+					Thread.sleep(5000);
 					objMyWriter.writeJSONData();
-					System.out.println("JSON data saved to a text file.");
+					System.out
+							.println("JSON data saved to a text file at location: \n");
+					System.out.println(objREMSdata.getJSONFilePath() + "\n");
 					break;
 				case "READ_DATA":
+					System.out
+							.println("Command received to read data from client....\n");
+					Thread.sleep(3000);
+					System.out.println("Reading data from file....\n");
+					Thread.sleep(5000);
 					objREMSdata.readJSONData();
-					System.out.println("JSON data read from a text file.");
-					System.out.println(objREMSdata.readJSONData().toJSONString());
+					System.out.println("JSON data read from a text file. \n");
+					System.out.println(objREMSdata.readJSONData()
+							.toJSONString() + "\n");
 					break;
 				default:
 					break;
@@ -60,17 +78,13 @@ public class REMSServer extends RoverServerRunnable {
 
 				// write object to Socket
 				outputToAnotherObject
-						.writeObject("Module REMS Server response Hi Client - "
+						.writeObject("Module REMS Server response - "
 								+ message);
-				// outputToAnotherObject.writeObject("JSON data \n"
-				// + objREMSdata.getRemsData() + " \nFrom REMS module"
-				// + message);
 
 				// close resources
 				inputFromAnotherObject.close();
 				outputToAnotherObject.close();
 
-				// getRoverServerSocket().closeSocket();
 				// terminate the server if client sends exit request
 				if (message.equalsIgnoreCase("exit"))
 					break;
