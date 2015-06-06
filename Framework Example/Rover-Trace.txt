@@ -1,0 +1,3 @@
+OldX : 0.0, OldY : 0.0, Input_Angle : 0.0, Input_Distance : 2.828427, NewX : 2.828427, NewY : 0.0, Command : MBLTY_FWRD
+OldX : 2.828427, OldY : 0.0, Input_Angle : 20.0, Input_Distance : 7.8284273, NewX : 6.023068, NewY : 7.1469254, Command : MBLTY_TURNLEFT
+OldX : 6.023068, OldY : 7.1469254, Input_Angle : 20.0, Input_Distance : 7.8284273, NewX : 13.851496, NewY : 7.1469254, Command : MBLTY_TURNRIGHT

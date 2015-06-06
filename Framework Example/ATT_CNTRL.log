@@ -1,0 +1,118 @@
+2015-06-06 10:16:03,044 - main.MasterMain - INFO - *************************************************************************************************
+2015-06-06 10:16:03,044 - main.MasterMain - INFO - Starting ATTITUDE_CONTROL Application
+2015-06-06 10:16:03,091 - main.MasterMain - INFO - ATTITUDE_CONTROL Server Started !!!
+2015-06-06 10:16:03,123 - att_cntrl_module.AttCntrlServer - INFO - ATT_CNTRL Server: Waiting for MOBILITY request !!!
+2015-06-06 10:16:03,138 - main.MasterMain - INFO - MOBILITY Server Started !!!
+2015-06-06 10:16:03,154 - mobility_module.MobilityClient - INFO - MOBILITY client ready to send request 1 to ATT_CNTRL Server !!!
+2015-06-06 10:16:03,169 - att_cntrl_module.AttCntrlServer - INFO - ATT_CNTRL Server: Message Received from MOBILITY !!!
+2015-06-06 10:16:03,169 - att_cntrl_module.AttCntrlServer - INFO - Message from MOBILITY Client - ATT_CNTRL_LOCTN
+2015-06-06 10:16:03,169 - att_cntrl_module.AttCntrlServer - INFO - MOBILITY requesting for current location of Rover !!!
+2015-06-06 10:16:03,169 - main.AttitudeControl - INFO - Position for Center Of Gravity X : :0.0 And Y:0.0
+2015-06-06 10:16:03,169 - main.AttitudeControl - INFO - Angle of Movement:0.0
+2015-06-06 10:16:03,185 - main.AttitudeControl - INFO - Wheel X1: 5.0 And Y1: 4.5
+2015-06-06 10:16:03,185 - main.AttitudeControl - INFO - Wheel X2: 5.0 And Y2: -4.5
+2015-06-06 10:16:03,185 - main.AttitudeControl - INFO - Wheel X3: 0.0 And Y3: 4.5
+2015-06-06 10:16:03,185 - main.AttitudeControl - INFO - Wheel X4: 0.0 And Y4: -4.5
+2015-06-06 10:16:03,185 - main.AttitudeControl - INFO - Wheel X5: -5.0 And Y5: 4.5
+2015-06-06 10:16:03,185 - main.AttitudeControl - INFO - Wheel X6: -5.0 And Y6: -4.5
+2015-06-06 10:16:03,201 - main.AttitudeControl - INFO - Writing data to JSON File !!!
+2015-06-06 10:16:03,232 - att_cntrl_module.AttCntrlServer - INFO - ATT_CNTRL Server: Waiting for MOBILITY request !!!
+2015-06-06 10:16:04,169 - mobility_module.MobilityClient - INFO - MOBILITY Client: Response from ATT_CNTRL Server - {"MiddleWheel1":[0.0,4.5],"FrontWheel1":[5.0,4.5],"RearWheel2":[-5.0,-4.5],"MiddleWheel2":[0.0,-4.5],"CenterOfMass":[0.0,0.0],"RearWheel1":[-5.0,4.5],"FrontWheel2":[5.0,-4.5]}
+2015-06-06 10:16:31,185 - mobility_module.MobilityClient - INFO - MOBILITY client ready to send request 2 to ATT_CNTRL Server !!!
+2015-06-06 10:16:31,187 - mobility_module.MobilityClient - INFO - Reading JSON File for - MBLTY_FWRD
+2015-06-06 10:16:31,188 - att_cntrl_module.AttCntrlServer - INFO - ATT_CNTRL Server: Message Received from MOBILITY !!!
+2015-06-06 10:16:31,188 - att_cntrl_module.AttCntrlServer - INFO - Message from MOBILITY Client - MBLTY_FWRD,{"mobility":{"reportFilename":"Report.txt"},"distance":2.8284271247461903,"previous_slope":57.29577951308232,"total_running_time":0.1885618083164127,"slope":1.0,"speed":30.0,"currentLocation":{"x":137.0,"y":265.0},"total_distance":5.656854249492381,"turn_angle":0.0,"running_time":0.09428090415820635,"step":2,"power":2.07,"state":true,"slope_degree":57.29577951308232}
+2015-06-06 10:16:31,188 - att_cntrl_module.AttCntrlServer - INFO - MOBILITY requesting to Move Rover
+2015-06-06 10:16:31,188 - att_cntrl_module.AttCntrlServer - INFO - MOBILITY Requesting for - MBLTY_FWRD
+2015-06-06 10:16:31,204 - main.AttitudeControl - INFO - Calculating Tilt for New Co-ordinates !!!
+2015-06-06 10:16:31,672 - att_cntrl_module.AttCntrlServer - INFO - Tilt for Center of Gravity :14.0
+2015-06-06 10:16:31,672 - att_cntrl_module.AttCntrlServer - INFO - Tilt is below 30 degree. Rover can moved !!!
+2015-06-06 10:16:31,688 - att_cntrl_module.AttCntrlServer - INFO - ATT_CNTRL Server: Waiting for MOBILITY request !!!
+2015-06-06 10:16:32,188 - mobility_module.MobilityClient - INFO - MOBILITY Client: Response from ATT_CNTRL Server - ATT_CNTRL_MOVT_PERMIT
+2015-06-06 10:16:33,190 - mobility_module.MobilityClient - INFO - Rover is allowed to move ahead.
+2015-06-06 10:17:03,194 - mobility_module.MobilityClient - INFO - MOBILITY client ready to send request 3 to ATT_CNTRL Server !!!
+2015-06-06 10:17:03,197 - att_cntrl_module.AttCntrlServer - INFO - ATT_CNTRL Server: Message Received from MOBILITY !!!
+2015-06-06 10:17:03,197 - att_cntrl_module.AttCntrlServer - INFO - Message from MOBILITY Client - ATT_CNTRL_LOCTN
+2015-06-06 10:17:03,198 - att_cntrl_module.AttCntrlServer - INFO - MOBILITY requesting for current location of Rover !!!
+2015-06-06 10:17:03,198 - main.AttitudeControl - INFO - Position for Center Of Gravity X : :2.828427 And Y:0.0
+2015-06-06 10:17:03,198 - main.AttitudeControl - INFO - Angle of Movement:0.0
+2015-06-06 10:17:03,198 - main.AttitudeControl - INFO - Wheel X1: 7.8284273 And Y1: 4.5
+2015-06-06 10:17:03,198 - main.AttitudeControl - INFO - Wheel X2: 7.8284273 And Y2: -4.5
+2015-06-06 10:17:03,198 - main.AttitudeControl - INFO - Wheel X3: 2.828427 And Y3: 4.5
+2015-06-06 10:17:03,198 - main.AttitudeControl - INFO - Wheel X4: 2.828427 And Y4: -4.5
+2015-06-06 10:17:03,198 - main.AttitudeControl - INFO - Wheel X5: -2.171573 And Y5: 4.5
+2015-06-06 10:17:03,198 - main.AttitudeControl - INFO - Wheel X6: -2.171573 And Y6: -4.5
+2015-06-06 10:17:03,198 - main.AttitudeControl - INFO - Writing data to JSON File !!!
+2015-06-06 10:17:03,198 - att_cntrl_module.AttCntrlServer - INFO - ATT_CNTRL Server: Waiting for MOBILITY request !!!
+2015-06-06 10:17:04,198 - mobility_module.MobilityClient - INFO - MOBILITY Client: Response from ATT_CNTRL Server - {"MiddleWheel1":[2.828427,4.5],"FrontWheel1":[7.8284273,4.5],"RearWheel2":[-2.171573,-4.5],"MiddleWheel2":[2.828427,-4.5],"CenterOfMass":[2.828427,0.0],"RearWheel1":[-2.171573,4.5],"FrontWheel2":[7.8284273,-4.5]}
+2015-06-06 10:17:16,212 - mobility_module.MobilityClient - INFO - MOBILITY client ready to send request 4 to ATT_CNTRL Server !!!
+2015-06-06 10:17:16,212 - mobility_module.MobilityClient - INFO - Reading JSON File for - MBLTY_TURNLEFT
+2015-06-06 10:17:16,215 - att_cntrl_module.AttCntrlServer - INFO - ATT_CNTRL Server: Message Received from MOBILITY !!!
+2015-06-06 10:17:16,215 - att_cntrl_module.AttCntrlServer - INFO - Message from MOBILITY Client - MBLTY_TURNLEFT,{"mobility":{"reportFilename":"Report.txt"},"distance":7.828427124746191,"previous_slope":57.29577951308232,"total_running_time":0.1885618083164127,"slope":1.0,"speed":30.0,"currentLocation":{"x":137.0,"y":265.0},"total_distance":5.656854249492381,"turn_angle":20.0,"running_time":0.09428090415820635,"step":2,"power":2.07,"state":true,"slope_degree":57.29577951308232}
+2015-06-06 10:17:16,215 - att_cntrl_module.AttCntrlServer - INFO - MOBILITY requesting to Move Rover
+2015-06-06 10:17:16,215 - att_cntrl_module.AttCntrlServer - INFO - MOBILITY Requesting for - MBLTY_TURNLEFT
+2015-06-06 10:17:16,215 - main.AttitudeControl - INFO - Calculating Tilt for New Co-ordinates !!!
+2015-06-06 10:17:16,465 - att_cntrl_module.AttCntrlServer - INFO - Tilt for Center of Gravity :14.0
+2015-06-06 10:17:16,465 - att_cntrl_module.AttCntrlServer - INFO - Tilt is below 30 degree. Rover can moved !!!
+2015-06-06 10:17:16,465 - att_cntrl_module.AttCntrlServer - INFO - ATT_CNTRL Server: Waiting for MOBILITY request !!!
+2015-06-06 10:17:17,215 - mobility_module.MobilityClient - INFO - MOBILITY Client: Response from ATT_CNTRL Server - ATT_CNTRL_MOVT_PERMIT
+2015-06-06 10:17:18,217 - mobility_module.MobilityClient - INFO - Rover is allowed to move ahead.
+2015-06-06 10:17:49,231 - mobility_module.MobilityClient - INFO - MOBILITY client ready to send request 5 to ATT_CNTRL Server !!!
+2015-06-06 10:17:49,233 - att_cntrl_module.AttCntrlServer - INFO - ATT_CNTRL Server: Message Received from MOBILITY !!!
+2015-06-06 10:17:49,233 - att_cntrl_module.AttCntrlServer - INFO - Message from MOBILITY Client - ATT_CNTRL_LOCTN
+2015-06-06 10:17:49,233 - att_cntrl_module.AttCntrlServer - INFO - MOBILITY requesting for current location of Rover !!!
+2015-06-06 10:17:49,234 - main.AttitudeControl - INFO - Position for Center Of Gravity X : :6.023068 And Y:7.1469254
+2015-06-06 10:17:49,234 - main.AttitudeControl - INFO - Angle of Movement:20.0
+2015-06-06 10:17:49,234 - main.AttitudeControl - INFO - Wheel X1: 11.023067 And Y1: 11.646925
+2015-06-06 10:17:49,234 - main.AttitudeControl - INFO - Wheel X2: 11.023067 And Y2: 2.6469254
+2015-06-06 10:17:49,234 - main.AttitudeControl - INFO - Wheel X3: 6.023068 And Y3: 11.646925
+2015-06-06 10:17:49,234 - main.AttitudeControl - INFO - Wheel X4: 6.023068 And Y4: 2.6469254
+2015-06-06 10:17:49,234 - main.AttitudeControl - INFO - Wheel X5: 1.023068 And Y5: 11.646925
+2015-06-06 10:17:49,234 - main.AttitudeControl - INFO - Wheel X6: 1.023068 And Y6: 2.6469254
+2015-06-06 10:17:49,234 - main.AttitudeControl - INFO - Writing data to JSON File !!!
+2015-06-06 10:17:49,250 - att_cntrl_module.AttCntrlServer - INFO - ATT_CNTRL Server: Waiting for MOBILITY request !!!
+2015-06-06 10:17:50,234 - mobility_module.MobilityClient - INFO - MOBILITY Client: Response from ATT_CNTRL Server - {"MiddleWheel1":[6.023068,11.646925],"FrontWheel1":[11.023067,11.646925],"RearWheel2":[1.023068,2.6469254],"MiddleWheel2":[6.023068,2.6469254],"CenterOfMass":[6.023068,7.1469254],"RearWheel1":[1.023068,11.646925],"FrontWheel2":[11.023067,2.6469254]}
+2015-06-06 10:17:57,246 - mobility_module.MobilityClient - INFO - MOBILITY client ready to send request 6 to ATT_CNTRL Server !!!
+2015-06-06 10:17:57,249 - mobility_module.MobilityClient - INFO - Reading JSON File for - MBLTY_TURNRIGHT
+2015-06-06 10:17:57,250 - att_cntrl_module.AttCntrlServer - INFO - ATT_CNTRL Server: Message Received from MOBILITY !!!
+2015-06-06 10:17:57,250 - att_cntrl_module.AttCntrlServer - INFO - Message from MOBILITY Client - MBLTY_TURNRIGHT,{"mobility":{"reportFilename":"Report.txt"},"distance":7.828427124746191,"previous_slope":57.29577951308232,"total_running_time":0.1885618083164127,"slope":1.0,"speed":30.0,"currentLocation":{"x":137.0,"y":265.0},"total_distance":5.656854249492381,"turn_angle":20.0,"running_time":0.09428090415820635,"step":2,"power":2.07,"state":true,"slope_degree":57.29577951308232}
+2015-06-06 10:17:57,250 - att_cntrl_module.AttCntrlServer - INFO - MOBILITY requesting to Move Rover
+2015-06-06 10:17:57,250 - att_cntrl_module.AttCntrlServer - INFO - MOBILITY Requesting for - MBLTY_TURNRIGHT
+2015-06-06 10:17:57,250 - main.AttitudeControl - INFO - Calculating Tilt for New Co-ordinates !!!
+2015-06-06 10:17:57,484 - att_cntrl_module.AttCntrlServer - INFO - Tilt for Center of Gravity :24.0
+2015-06-06 10:17:57,484 - att_cntrl_module.AttCntrlServer - INFO - Tilt is below 30 degree. Rover can moved !!!
+2015-06-06 10:17:57,484 - att_cntrl_module.AttCntrlServer - INFO - ATT_CNTRL Server: Waiting for MOBILITY request !!!
+2015-06-06 10:17:58,250 - mobility_module.MobilityClient - INFO - MOBILITY Client: Response from ATT_CNTRL Server - ATT_CNTRL_MOVT_PERMIT
+2015-06-06 10:17:58,250 - mobility_module.MobilityClient - INFO - Rover is allowed to move ahead.
+2015-06-06 10:18:09,262 - mobility_module.MobilityClient - INFO - MOBILITY client ready to send request 7 to ATT_CNTRL Server !!!
+2015-06-06 10:18:09,263 - att_cntrl_module.AttCntrlServer - INFO - ATT_CNTRL Server: Message Received from MOBILITY !!!
+2015-06-06 10:18:09,263 - att_cntrl_module.AttCntrlServer - INFO - Message from MOBILITY Client - ATT_CNTRL_LOCTN
+2015-06-06 10:18:09,263 - att_cntrl_module.AttCntrlServer - INFO - MOBILITY requesting for current location of Rover !!!
+2015-06-06 10:18:09,264 - main.AttitudeControl - INFO - Position for Center Of Gravity X : :13.851496 And Y:7.1469254
+2015-06-06 10:18:09,264 - main.AttitudeControl - INFO - Angle of Movement:0.0
+2015-06-06 10:18:09,264 - main.AttitudeControl - INFO - Wheel X1: 18.851496 And Y1: 11.646925
+2015-06-06 10:18:09,264 - main.AttitudeControl - INFO - Wheel X2: 18.851496 And Y2: 2.6469254
+2015-06-06 10:18:09,264 - main.AttitudeControl - INFO - Wheel X3: 13.851496 And Y3: 11.646925
+2015-06-06 10:18:09,264 - main.AttitudeControl - INFO - Wheel X4: 13.851496 And Y4: 2.6469254
+2015-06-06 10:18:09,264 - main.AttitudeControl - INFO - Wheel X5: 8.851496 And Y5: 11.646925
+2015-06-06 10:18:09,264 - main.AttitudeControl - INFO - Wheel X6: 8.851496 And Y6: 2.6469254
+2015-06-06 10:18:09,264 - main.AttitudeControl - INFO - Writing data to JSON File !!!
+2015-06-06 10:18:09,264 - att_cntrl_module.AttCntrlServer - INFO - ATT_CNTRL Server: Waiting for MOBILITY request !!!
+2015-06-06 10:18:10,264 - mobility_module.MobilityClient - INFO - MOBILITY Client: Response from ATT_CNTRL Server - {"MiddleWheel1":[13.851496,11.646925],"FrontWheel1":[18.851496,11.646925],"RearWheel2":[8.851496,2.6469254],"MiddleWheel2":[13.851496,2.6469254],"CenterOfMass":[13.851496,7.1469254],"RearWheel1":[8.851496,11.646925],"FrontWheel2":[18.851496,2.6469254]}
+2015-06-06 10:18:17,275 - mobility_module.MobilityClient - INFO - MOBILITY client ready to send request 8 to ATT_CNTRL Server !!!
+2015-06-06 10:18:17,275 - mobility_module.MobilityClient - INFO - Reading JSON File for - MBLTY_TURNLEFT
+2015-06-06 10:18:17,278 - att_cntrl_module.AttCntrlServer - INFO - ATT_CNTRL Server: Message Received from MOBILITY !!!
+2015-06-06 10:18:17,278 - att_cntrl_module.AttCntrlServer - INFO - Message from MOBILITY Client - MBLTY_TURNLEFT,{"mobility":{"reportFilename":"Report.txt"},"distance":25.82842712474619,"previous_slope":57.29577951308232,"total_running_time":0.1885618083164127,"slope":1.0,"speed":30.0,"currentLocation":{"x":137.0,"y":265.0},"total_distance":5.656854249492381,"turn_angle":50.0,"running_time":0.09428090415820635,"step":2,"power":2.07,"state":true,"slope_degree":57.29577951308232}
+2015-06-06 10:18:17,278 - att_cntrl_module.AttCntrlServer - INFO - MOBILITY requesting to Move Rover
+2015-06-06 10:18:17,278 - att_cntrl_module.AttCntrlServer - INFO - MOBILITY Requesting for - MBLTY_TURNLEFT
+2015-06-06 10:18:17,278 - main.AttitudeControl - INFO - Calculating Tilt for New Co-ordinates !!!
+2015-06-06 10:18:17,481 - att_cntrl_module.AttCntrlServer - INFO - Tilt for Center of Gravity :41.0
+2015-06-06 10:18:17,481 - att_cntrl_module.AttCntrlServer - WARN - Tilt is above 30 degree. Can not Move Rover !!!
+2015-06-06 10:18:17,481 - att_cntrl_module.AttCntrlServer - INFO - ATT_CNTRL Server: Waiting for MOBILITY request !!!
+2015-06-06 10:18:18,278 - mobility_module.MobilityClient - INFO - MOBILITY Client: Response from ATT_CNTRL Server - ATT_CNTRL_MOVT_DECLINE
+2015-06-06 10:18:19,280 - mobility_module.MobilityClient - WARN - Rover is not allowed to move ahead. Take Detour !!!
+
+
+2015-06-06 10:18:49,283 - att_cntrl_module.AttCntrlServer - INFO - ATT_CNTRL Server: Message Received from MOBILITY !!!
+2015-06-06 10:18:49,283 - att_cntrl_module.AttCntrlServer - INFO - Message from MOBILITY Client - EXIT
+2015-06-06 10:18:49,285 - mobility_module.MobilityClient - INFO - MOBILITY Client: Response from ATT_CNTRL Server - Server: Shutting down Socket server 

@@ -1,0 +1,21 @@
+{
+  "step": 2,
+  "distance": 2.8284271247461903,
+  "slope": 1.0,
+  "slope_degree": 57.29577951308232,
+  "turn_angle": 0.0,
+  "previous_slope": 57.29577951308232,
+  "power": 2.07,
+  "state": true,
+  "speed": 30.0,
+  "running_time": 0.09428090415820635,
+  "total_distance": 5.656854249492381,
+  "total_running_time": 0.1885618083164127,
+  "mobility": {
+    "reportFilename": "Report.txt"
+  },
+  "currentLocation": {
+    "x": 137.0,
+    "y": 265.0
+  }
+}
