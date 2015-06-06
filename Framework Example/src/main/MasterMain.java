@@ -4,55 +4,42 @@ import generic.RoverThreadHandler;
 
 import java.io.IOException;
 
-import module1.ModuleOneClient;
-import module1.ModuleOneServer;
-import module2.ModuleTwoClient;
-import module2.ModuleTwoServer;
+import org.apache.log4j.Logger;
+
+import att_cntrl_module.AttCntrlServer;
+import mobility_module.MobilityClient;
+
+
+/**
+ * @author Hani, Antony, Sachin, Vatsal
+ *
+ */
 
 public class MasterMain {
-
+	
+	private static final Logger logger = Logger.getLogger(MasterMain.class);
+	
+	/**
+	 * @param args
+	 */
 	public static void main(String[] args) {
-		
-		//Each module has its own port
-		int port_one = 9897;
-		int port_two = 9898;
-		
+		logger.info("*************************************************************************************************");
+		logger.info("Starting ATTITUDE_CONTROL Application");
+		int port_one = 9002;
 		try {
-			
-			// create a thread for module one
-			ModuleOneServer serverOne = new ModuleOneServer(port_one);
+			AttCntrlServer serverOne = new AttCntrlServer(port_one);
 			Thread server_1 = RoverThreadHandler.getRoverThreadHandler().getNewThread(serverOne);
-			
-			// create a thread for module two
-			ModuleTwoServer serverTwo = new ModuleTwoServer(port_two);
-			Thread server_2 = RoverThreadHandler.getRoverThreadHandler().getNewThread(serverTwo);
-			
-			// each server begins listening
+			logger.info("ATTITUDE_CONTROL Server Started !!!");
 			server_1.start();
-			server_2.start();
-			
-			// The following commands are examples of sending data: 
-			// from module 1 client to module 2 server
-			// and from module 2 client to module 2 server
-			
-			// client one server sending messages to server two
-			ModuleOneClient clientOne = new ModuleOneClient(port_two, null); // notice port_two
-			Thread client_1 = RoverThreadHandler.getRoverThreadHandler().getNewThread(clientOne);
-			
-			// client two server sending messages to server one
-			ModuleTwoClient clientTwo = new ModuleTwoClient(port_one, null); // notice port_one
+		
+			MobilityClient clientTwo = new MobilityClient(port_one, null);
 			Thread client_2 = RoverThreadHandler.getRoverThreadHandler().getNewThread(clientTwo);
-			
-			// start the thread which communicates through sockets
-			client_1.start();
+			logger.info("MOBILITY Server Started !!!");
 			client_2.start();
-			
 		} 
 		catch (IOException e) {
-			// TODO Auto-generated catch block
+			logger.error("Error In Starting Server !!!");
 			e.printStackTrace();
 		}
-
 	}
-
 }

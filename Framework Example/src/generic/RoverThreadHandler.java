@@ -1,5 +1,9 @@
 package generic;
 
+/**
+ * @author Project Management Team
+ *
+ */
 public class RoverThreadHandler {
 	
 	private static RoverThreadHandler roverThreadHandler;	
@@ -8,6 +12,9 @@ public class RoverThreadHandler {
 		
 	}
 	
+	/**
+	 * @return roverThreadHandler
+	 */
 	public static RoverThreadHandler getRoverThreadHandler(){
 		
 		if(roverThreadHandler == null){
@@ -17,6 +24,10 @@ public class RoverThreadHandler {
 		return roverThreadHandler;		
 	}
 	
+	/**
+	 * @param runnable
+	 * @return RoverThreadFactory.getRoverThreadFactory().newThread(runnable);
+	 */
 	public Thread getNewThread(Runnable runnable){		
 		return RoverThreadFactory.getRoverThreadFactory().newThread(runnable);
 	}

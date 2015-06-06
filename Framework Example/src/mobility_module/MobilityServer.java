@@ -1,4 +1,4 @@
-package module2;
+package mobility_module;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -6,12 +6,23 @@ import java.io.ObjectOutputStream;
 
 import generic.RoverServerRunnable;
 
-public class ModuleTwoServer extends RoverServerRunnable {
+/**
+ * @author Hani, Antony, Sachin, Vatsal
+ *
+ */
+public class MobilityServer extends RoverServerRunnable {
 
-	public ModuleTwoServer(int port) throws IOException {
+	/**
+	 * @param port Application port
+	 * @throws IOException
+	 */
+	public MobilityServer(int port) throws IOException {
 		super(port);
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Runnable#run()
+	 */
 	@Override
 	public void run() {
 		try {

@@ -7,6 +7,10 @@ import java.util.List;
 import java.util.concurrent.ThreadFactory;
 
 
+/**
+ * @author Project Management Team
+ *
+ */
 class RoverThreadFactory implements ThreadFactory {
 
 	private int          counter;
@@ -14,6 +18,9 @@ class RoverThreadFactory implements ThreadFactory {
     private List<String> stats;
     private static RoverThreadFactory roverThreadFactory;
     
+    /**
+     * @return roverThreadFactory
+     */
     public static RoverThreadFactory getRoverThreadFactory(){
     	if(roverThreadFactory == null){
     		roverThreadFactory = new RoverThreadFactory("");
@@ -22,6 +29,9 @@ class RoverThreadFactory implements ThreadFactory {
     	return roverThreadFactory;
     }
     
+    /**
+     * @param name
+     */
     private RoverThreadFactory(String name)
     {
        counter = 1;
@@ -29,6 +39,9 @@ class RoverThreadFactory implements ThreadFactory {
        stats = new ArrayList<String>();
     }
 
+	/* (non-Javadoc)
+	 * @see java.util.concurrent.ThreadFactory#newThread(java.lang.Runnable)
+	 */
 	@Override
 	public Thread newThread(Runnable runnable) {
 		Thread t = new RoverThread(runnable, name + "-Thread_" + counter);
@@ -37,6 +50,9 @@ class RoverThreadFactory implements ThreadFactory {
 	      return t;
 	}
 	
+	/**
+	 * @return buffer.toString()
+	 */
 	public String getStats(){
       StringBuffer buffer = new StringBuffer();
       Iterator<String> it = stats.iterator();
@@ -47,22 +63,37 @@ class RoverThreadFactory implements ThreadFactory {
       return buffer.toString();
    }
 	   
+	/**
+	 * @return counter
+	 */
 	public int getCounter() {
 		return counter;
 	}
 
+	/**
+	 * @param counter
+	 */
 	public void setCounter(int counter) {
 		this.counter = counter;
 	}
 
+	/**
+	 * @return name
+	 */
 	public String getName() {
 		return name;
 	}
 
+	/**
+	 * @param name
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
+	/**
+	 * @param stats
+	 */
 	public void setStats(List<String> stats) {
 		this.stats = stats;
 	}
